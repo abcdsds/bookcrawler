@@ -16,7 +16,7 @@ public class CrawlerRunner implements ApplicationRunner {
 		config.setPolitenessDelay(500);
 		config.setCrawlStorageFolder("data/crawl");
 		
-		//PageFetcher pageFetcher
+		PageFetcher pageFetcher = new PageFetcher(config);
 	}
 
 }

@@ -36,6 +36,11 @@ public class KafkaConsumerConfig {
     }
 
     @Bean
+    public ConcurrentKafkaListenerContainerFactory<String, String> crawlerKafkaListenerContainerFactory() {
+        return kafkaListenerContainerFactory("crawler-topic");
+    }
+    
+    @Bean
     public ConcurrentKafkaListenerContainerFactory<String, String> fooKafkaListenerContainerFactory() {
         return kafkaListenerContainerFactory("foo");
     }

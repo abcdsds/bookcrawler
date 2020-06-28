@@ -1,5 +1,7 @@
 package bookcrawler.crawler;
 
+import static bookcrawler.kafka.producer.KafkaCrawlerService.kafkaService;
+
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
@@ -11,13 +13,11 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Component;
 
-import static bookcrawler.kafka.KafkaService.kafkaService;
-
 import bookcrawler.common.message.ScrapingMessage;
 import bookcrawler.common.message.SiteType;
 import bookcrawler.crawler.config.CrawlerSiteSetting;
 import bookcrawler.crawler.config.CrawlerSiteType;
-import bookcrawler.kafka.KafkaService;
+import bookcrawler.kafka.producer.KafkaCrawlerService;
 import edu.uci.ics.crawler4j.crawler.CrawlConfig;
 import edu.uci.ics.crawler4j.crawler.CrawlController;
 import edu.uci.ics.crawler4j.crawler.Page;

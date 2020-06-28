@@ -27,7 +27,7 @@ public class KafkaConsumerConfig {
         props.put(ConsumerConfig.GROUP_ID_CONFIG, groupId);
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, ByteArrayDeserializer.class);
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, ByteArrayDeserializer.class);
-        props.put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, 2);
+        props.put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, 100);
         props.put(ConsumerConfig.FETCH_MIN_BYTES_CONFIG, 5242880);
         props.put(ConsumerConfig.FETCH_MAX_BYTES_CONFIG, 10485760);
         props.put(ConsumerConfig.FETCH_MAX_WAIT_MS_CONFIG, 1);
@@ -39,6 +39,7 @@ public class KafkaConsumerConfig {
     public ConcurrentKafkaListenerContainerFactory<String, byte[]> kafkaListenerContainerByteFactory(String groupId) {
         ConcurrentKafkaListenerContainerFactory<String, byte[]> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory(groupId));
+        factory.setBatchListener(true);
         return factory;
     }
 
